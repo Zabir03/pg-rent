@@ -1,4 +1,5 @@
-# PG Rent Management System — Starter
+# PG Rent Management System — Rentify
+Demo: https://myrentify.page.gd
 
 A role-based PG (Paying Guest) rent management system in **PHP 8 + MySQL**, with a clean responsive SaaS dashboard, light/dark theme, and security baked in (password hashing, prepared statements, CSRF tokens, RBAC, session timeout, activity logs).
 
