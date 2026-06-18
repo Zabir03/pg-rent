@@ -1,0 +1,143 @@
+/* ============================================================
+   PG Rent Manager — UI
+   Palette: ink #1b2430, slate #4a5568, teal accent #0f9d8f,
+            paper #f6f7f9, card #ffffff, line #e4e7ec
+   Type: system stack, tight headings, readable tables.
+   ============================================================ */
+
+:root{
+  --ink:#1b2430; --slate:#4a5568; --muted:#8a93a2;
+  --paper:#f6f7f9; --card:#ffffff; --line:#e4e7ec;
+  --accent:#0f9d8f; --accent-d:#0b7e73;
+  --green:#1f9d55; --amber:#d68a00; --red:#d64545; --blue:#2b6cb0;
+  --radius:12px; --shadow:0 1px 2px rgba(16,24,40,.06),0 1px 3px rgba(16,24,40,.08);
+  --sidebar-w:236px;
+}
+[data-theme="dark"]{
+  --ink:#e7ebf0; --slate:#aab3c2; --muted:#7d8696;
+  --paper:#0f141a; --card:#161d26; --line:#27313d;
+  --shadow:0 1px 3px rgba(0,0,0,.4);
+}
+
+*{box-sizing:border-box}
+body{
+  margin:0; font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  background:var(--paper); color:var(--ink); font-size:14.5px; line-height:1.5;
+}
+a{color:var(--accent); text-decoration:none}
+h1,h2,h3{margin:0 0 .4em; font-weight:650; letter-spacing:-.01em}
+
+/* ---------- Auth ---------- */
+.auth-body{display:grid; place-items:center; min-height:100vh; background:
+  radial-gradient(1200px 600px at 80% -10%, rgba(15,157,143,.12), transparent),
+  var(--paper);}
+.auth-card{background:var(--card); padding:34px 30px; border-radius:16px;
+  box-shadow:var(--shadow); width:min(380px,92vw); border:1px solid var(--line)}
+.auth-logo{font-size:1.5rem; text-align:center; margin-bottom:18px}
+.auth-logo span{color:var(--accent)}
+.auth-link{display:block; text-align:center; margin-top:14px; font-size:.9rem}
+label{display:block; margin:0 0 14px; font-size:.86rem; color:var(--slate); font-weight:600}
+input,select,textarea{
+  width:100%; margin-top:5px; padding:10px 12px; font-size:.95rem;
+  border:1px solid var(--line); border-radius:9px; background:var(--card); color:var(--ink);
+}
+input:focus,select:focus,textarea:focus{outline:2px solid var(--accent); border-color:transparent}
+
+/* ---------- Buttons ---------- */
+.btn{display:inline-flex; align-items:center; gap:6px; cursor:pointer;
+  border:1px solid transparent; padding:9px 15px; border-radius:9px;
+  font-size:.9rem; font-weight:600; background:var(--card); color:var(--ink)}
+.btn-primary{background:var(--accent); color:#fff}
+.btn-primary:hover{background:var(--accent-d)}
+.btn-ghost{background:transparent; border-color:var(--line); color:var(--slate)}
+.btn-ghost:hover{background:var(--paper)}
+.btn-danger{background:var(--red); color:#fff}
+.btn-block{width:100%; justify-content:center}
+.btn-sm{padding:5px 10px; font-size:.8rem}
+
+/* ---------- Layout ---------- */
+.layout{display:flex; min-height:100vh}
+.sidebar{width:var(--sidebar-w); background:var(--card); border-right:1px solid var(--line);
+  position:fixed; inset:0 auto 0 0; padding:18px 14px; z-index:30; transition:transform .2s}
+.brand{font-size:1.25rem; font-weight:750; padding:6px 10px 18px; letter-spacing:-.02em}
+.brand span{color:var(--accent)}
+.sidebar nav a{display:flex; align-items:center; gap:10px; padding:9px 11px; border-radius:9px;
+  color:var(--slate); font-weight:600; font-size:.9rem; margin-bottom:3px}
+.sidebar nav a:hover{background:var(--paper); color:var(--ink)}
+.sidebar nav a.active{background:rgba(15,157,143,.12); color:var(--accent-d)}
+.sidebar .ic{width:20px; text-align:center}
+
+.main{flex:1; margin-left:var(--sidebar-w); display:flex; flex-direction:column}
+.topbar{display:flex; align-items:center; gap:14px; padding:12px 22px;
+  background:var(--card); border-bottom:1px solid var(--line); position:sticky; top:0; z-index:20}
+.topbar h2{margin:0; font-size:1.05rem}
+.topbar-right{margin-left:auto; display:flex; align-items:center; gap:12px}
+.user-chip{font-size:.8rem; color:var(--muted)}
+.theme-toggle,.hamburger{background:none; border:none; font-size:1.15rem; cursor:pointer; color:var(--slate)}
+.hamburger{display:none}
+.content{padding:22px; max-width:1200px; width:100%}
+
+/* ---------- Cards / stats ---------- */
+.stat-grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(190px,1fr)); gap:14px; margin-bottom:22px}
+.stat{background:var(--card); border:1px solid var(--line); border-radius:var(--radius);
+  padding:16px 18px; box-shadow:var(--shadow)}
+.stat .label{font-size:.78rem; color:var(--muted); font-weight:600; text-transform:uppercase; letter-spacing:.03em}
+.stat .value{font-size:1.7rem; font-weight:700; margin-top:6px; letter-spacing:-.02em}
+.stat .value.green{color:var(--green)} .stat .value.amber{color:var(--amber)} .stat .value.red{color:var(--red)}
+
+.panel{background:var(--card); border:1px solid var(--line); border-radius:var(--radius);
+  box-shadow:var(--shadow); margin-bottom:22px; overflow:hidden}
+.panel-head{display:flex; align-items:center; gap:12px; padding:14px 18px; border-bottom:1px solid var(--line)}
+.panel-head h3{margin:0; font-size:1rem}
+.panel-head .btn{margin-left:auto}
+.panel-body{padding:18px}
+
+/* ---------- Tables ---------- */
+.table-wrap{overflow-x:auto}
+table.data{width:100%; border-collapse:collapse; font-size:.9rem}
+table.data th,table.data td{padding:11px 14px; text-align:left; border-bottom:1px solid var(--line)}
+table.data th{font-size:.74rem; text-transform:uppercase; letter-spacing:.04em; color:var(--muted); font-weight:700}
+table.data tr:hover td{background:var(--paper)}
+
+.badge{display:inline-block; padding:2px 9px; border-radius:20px; font-size:.74rem; font-weight:700}
+.badge.green{background:rgba(31,157,85,.14); color:var(--green)}
+.badge.amber{background:rgba(214,138,0,.16); color:var(--amber)}
+.badge.red{background:rgba(214,69,69,.14); color:var(--red)}
+.badge.blue{background:rgba(43,108,176,.14); color:var(--blue)}
+.badge.gray{background:var(--paper); color:var(--slate)}
+
+/* ---------- Forms grid ---------- */
+.form-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:0 18px}
+.form-grid .full{grid-column:1/-1}
+.toolbar{display:flex; gap:10px; flex-wrap:wrap; margin-bottom:16px; align-items:center}
+.toolbar input,.toolbar select{margin:0; max-width:230px}
+
+/* ---------- Toast ---------- */
+.toast{padding:11px 14px; border-radius:9px; font-size:.88rem; font-weight:600; margin-bottom:12px}
+.toast-success{background:rgba(31,157,85,.12); color:var(--green)}
+.toast-error{background:rgba(214,69,69,.12); color:var(--red)}
+.toast-warn{background:rgba(214,138,0,.14); color:var(--amber)}
+
+/* ---------- Bars (simple chart) ---------- */
+.bars{display:flex; align-items:flex-end; gap:10px; height:160px; padding-top:10px}
+.bars .bar{flex:1; background:linear-gradient(var(--accent),var(--accent-d)); border-radius:6px 6px 0 0; min-height:4px; position:relative}
+.bars .bar span{position:absolute; bottom:-20px; left:0; right:0; text-align:center; font-size:.72rem; color:var(--muted)}
+
+/* ---------- Notifications ---------- */
+.bell{position:relative;font-size:1.15rem;text-decoration:none;line-height:1}
+.bell-dot{position:absolute;top:-7px;right:-9px;background:var(--red);color:#fff;
+  font-size:.64rem;font-weight:700;min-width:16px;height:16px;border-radius:9px;
+  display:inline-flex;align-items:center;justify-content:center;padding:0 4px}
+.notif{display:flex;align-items:flex-start;gap:14px;padding:14px 18px;border-bottom:1px solid var(--line)}
+.notif.unread{background:rgba(15,157,143,.06)}
+.notif.unread strong::before{content:'●';color:var(--accent);margin-right:6px;font-size:.7em;vertical-align:middle}
+
+/* ---------- Responsive ---------- */
+@media (max-width:860px){
+  .sidebar{transform:translateX(-100%)}
+  .sidebar.open{transform:none}
+  .main{margin-left:0}
+  .hamburger{display:block}
+  .form-grid{grid-template-columns:1fr}
+  .user-chip{display:none}
+}
